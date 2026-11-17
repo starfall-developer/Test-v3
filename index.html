@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080510">
+  <meta name="description" content="Starfall — games, anime, manga, and more.">
+  <title>Starfall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true">
+    <div class="stars stars-a"></div><div class="stars stars-b"></div><div class="stars stars-c"></div>
+    <i class="shooting shooting-one"></i><i class="shooting shooting-two"></i><i class="shooting shooting-three"></i>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#" data-page="home" aria-label="Starfall home">
+      <span class="brand-mark">✦</span><span>starfall</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="games">Games</button>
+      <button class="nav-link" data-page="anime">Anime</button>
+      <button class="nav-link" data-page="manga">Manga</button>
+      <button class="nav-link" data-page="favorites">Favorites</button>
+    </nav>
+    <div class="top-actions">
+      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search Starfall..." autocomplete="off"></label>
+      <button class="icon-button" id="themeButton" title="Toggle glow" aria-label="Toggle glow">☼</button>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> YOUR UNIVERSE STARTS HERE</div>
+          <h1>Welcome to<br><span class="gradient-word">Starfall</span><span class="title-star">✦</span></h1>
+          <p class="hero-subtitle">Your place for games, anime, manga, and everything worth getting lost in.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" data-page="games">Explore games <span>↗</span></button>
+            <button class="button button-quiet" data-page="anime">Explore anime</button>
+          </div>
+          <div class="hero-note"><span class="tiny-star">✧</span> Find your next favorite thing.</div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="planet"><span></span></div>
+          <div class="orbit-star star-top">✦</div><div class="orbit-star star-bottom">✧</div>
+        </div>
+      </div>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div><div class="eyebrow">PICK YOUR NEXT ADVENTURE</div><h2>Explore Starfall</h2></div>
+        </div>
+        <div class="category-grid">
+          <button class="category-card category-games" data-page="games"><span class="category-icon">🎮</span><span><b>Games</b><small>Jump straight into the action</small></span><i>↗</i></button>
+          <button class="category-card category-anime" data-page="anime"><span class="category-icon">▶</span><span><b>Anime</b><small>Find something to watch</small></span><i>↗</i></button>
+          <button class="category-card category-manga" data-page="manga"><span class="category-icon">▤</span><span><b>Manga</b><small>Read your next story</small></span><i>↗</i></button>
+          <button class="category-card category-favorites" data-page="favorites"><span class="category-icon">☆</span><span><b>Favorites</b><small>Your saved collection</small></span><i>↗</i></button>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div><div class="eyebrow">HANDPICKED FOR YOU</div><h2>Featured <span class="muted-heading">discoveries</span></h2></div>
+          <button class="text-link" data-page="games">See everything ↗</button>
+        </div>
+        <div class="card-grid" id="homeFeatured"></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-games">
+      <div class="page-intro"><div class="eyebrow">PRESS PLAY</div><h1>Game <span class="gradient-word">library</span></h1><p>Pick a game and make the next few minutes yours.</p></div>
+      <div class="toolbar"><div class="filter-pills" id="gameFilters"><button class="filter-pill selected" data-filter="all">All games</button><button class="filter-pill" data-filter="arcade">Arcade</button><button class="filter-pill" data-filter="action">Action</button><button class="filter-pill" data-filter="puzzle">Puzzle</button></div><button class="button button-outline" data-add="game">＋ Add a game</button></div>
+      <div class="card-grid" id="gamesGrid"></div>
+      <div class="empty-state hidden" id="gamesEmpty">No games found. Try another search or add a game.</div>
+    </section>
+
+    <section class="page" id="page-anime">
+      <div class="page-intro"><div class="eyebrow">TIME FOR AN EPISODE</div><h1>Anime <span class="gradient-word">corner</span></h1><p>Keep your favorite shows and videos in one place.</p></div>
+      <div class="toolbar"><div class="toolbar-caption">YOUR WATCHLIST</div><button class="button button-outline" data-add="anime">＋ Add anime</button></div>
+      <div class="card-grid" id="animeGrid"></div>
+      <div class="empty-state hidden" id="animeEmpty">Nothing here yet. Add an anime link to start your collection.</div>
+    </section>
+
+    <section class="page" id="page-manga">
+      <div class="page-intro"><div class="eyebrow">TURN THE PAGE</div><h1>Manga <span class="gradient-word">shelf</span></h1><p>Save chapters, reader links, and stories you want to come back to.</p></div>
+      <div class="toolbar"><div class="toolbar-caption">YOUR READING LIST</div><button class="button button-outline" data-add="manga">＋ Add manga</button></div>
+      <div class="card-grid" id="mangaGrid"></div>
+      <div class="empty-state hidden" id="mangaEmpty">Your shelf is waiting. Add a manga or chapter link.</div>
+    </section>
+
+    <section class="page" id="page-favorites">
+      <div class="page-intro"><div class="eyebrow">THE ONES YOU LOVE</div><h1>Your <span class="gradient-word">favorites</span></h1><p>Everything you've saved, all in one constellation.</p></div>
+      <div class="card-grid" id="favoritesGrid"></div>
+      <div class="empty-state hidden" id="favoritesEmpty">No favorites yet. Tap the ☆ on any card to save it here.</div>
+    </section>
+
+    <footer class="site-footer"><a class="footer-brand" href="#" data-page="home">✦ starfall</a><span>Made for the late-night explorers.</span><span class="footer-status"><i></i> All systems glowing</span></footer>
+  </main>
+
+  <dialog class="modal" id="playerModal">
+    <div class="modal-top"><div><span class="modal-kicker">NOW OPENING</span><h2 id="playerTitle">Starfall</h2></div><button class="modal-close" data-close="playerModal" aria-label="Close">×</button></div>
+    <div class="player-frame" id="playerFrame"></div>
+    <div class="modal-bottom"><span id="playerDescription"></span><a id="openExternal" class="text-link" href="#" target="_blank" rel="noopener">Open in new tab ↗</a></div>
+  </dialog>
+
+  <dialog class="modal form-dialog" id="addModal">
+    <div class="modal-top"><div><span class="modal-kicker">GROW YOUR COLLECTION</span><h2 id="formTitle">Add to Starfall</h2></div><button class="modal-close" data-close="addModal" aria-label="Close">×</button></div>
+    <form id="addForm">
+      <label>Title<input name="title" required maxlength="70" placeholder="Give it a name"></label>
+      <label>Link<input name="url" required type="url" placeholder="https://..."></label>
+      <label>Category<input name="category" maxlength="30" placeholder="Arcade, fantasy, action..."></label>
+      <label>Description<textarea name="description" rows="2" maxlength="180" placeholder="What's it about?"></textarea></label>
+      <label>Cover image URL <span class="optional">(optional)</span><input name="cover" type="url" placeholder="https://..."></label>
+      <div class="form-actions"><button type="button" class="button button-quiet" data-close="addModal">Cancel</button><button type="submit" class="button button-primary">Add to Starfall</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
